@@ -1,13 +1,14 @@
-
+import Header from './Header'
+import Home from './Home';
 
 function App() {
+
+
   return (
     <div>
-      <h1>Hello from App</h1>
+      <Header />
+      <Home />
 
-      {/* Header */}
-      {/* Home */}
-      
     </div>
 
   );
