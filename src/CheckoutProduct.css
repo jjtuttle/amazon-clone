@@ -1,7 +1,16 @@
 .checkoutProduct {
     display: flex;
-    margin-top:20px;
-    margin-bottom: 20px;
+    margin-top:10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: solid 1px lightgrey;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.checkoutProduct:hover {
+    box-shadow: 0 5px 8px rgba(0,0,0,0.2);
+    transform:scale(1.01);
 }
 
 .checkoutProduct__info {

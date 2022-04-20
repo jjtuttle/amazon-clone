@@ -1,12 +1,14 @@
 import React from 'react';
 import './CheckoutProduct.css';
 import { useStateValue } from './StatProvider';
+import Button from '@mui/material/Button';
+import FlipMove from 'react-flip-move';
 
 
 const CheckoutProduct = ({ id, image, title, price, rating }) => {
     const [ { basket }, dispatch ] = useStateValue();
 
-    const removeFromBasket =() => {
+    const removeFromBasket = () => {
         // remove item from Basket
         dispatch({
             type: 'REMOVE_FROM_BASKET',
@@ -15,28 +17,32 @@ const CheckoutProduct = ({ id, image, title, price, rating }) => {
     }
 
     return (
-        <div className="checkoutProduct">
-            <img className="checkoutProduct__image"
-                src={image} alt="item"
-            />
+        <FlipMove>
+            <div className="checkoutProduct">
+                <img className="checkoutProduct__image"
+                    src={image} alt="item"
+                />
 
-            <div className="checkoutProduct__info">
-                <p className="checkoutProduct__title">{title}</p>
-                <p className="checkoutProduct__price">
-                    <small>$</small>
-                    <strong>{price}</strong>
-                </p>
-                <div className="checkoutProduct__rating">
-                    {Array(rating).fill().map((_, i) => (
-                        <p>🌟</p>
-                    ))}
+                <div className="checkoutProduct__info">
+                    <p className="checkoutProduct__title">{title}</p>
+                    <p className="checkoutProduct__price">
+                        <small>$</small>
+                        <strong>{price}</strong>
+                    </p>
+                    <div className="checkoutProduct__rating">
+                        {Array(rating).fill().map((_, i) => (
+                            <p>🌟</p>
+                        ))}
+                    </div>
+                    <Button size='small'
+                        style={{ textTransform: 'none' }}
+                        onClick={removeFromBasket}
+                    >
+                        Remove from Basket</Button>
                 </div>
-                <button
-                    onClick={removeFromBasket}
-                >
-                    Remove from Basket</button>
             </div>
-        </div>
+        </FlipMove>
+
     );
 };
 

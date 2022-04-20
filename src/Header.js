@@ -40,14 +40,14 @@ const Header = () => {
                     <div onClick={handleAuthentication}
                         className="header__option">
                         <span className="header__optionLineOne">
-                            Hello 
+                            Hello, {!user ? 'Guest' : user?.email}
                         </span>
                         <span className="header_optionLineTwo">
                             {user ? 'Sign Out' : 'Sign In'}
                         </span>
                     </div>
                 </Link>
-                
+
 
                 <div className="header__option">
                     <span className="header__optionLineOne">
