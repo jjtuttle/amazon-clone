@@ -10,6 +10,7 @@ import { getBasketTotal } from './reducer';
 import { useStateValue } from './StatProvider';
 import { useEffect } from 'react';
 import axios from './axios';
+import { db } from './firebase';
 
 
 
@@ -29,7 +30,7 @@ const Payment = () => {
 
     useEffect(() => {
         console.log("BEFORE axios sends to BE API <<<<<<<<");
-        
+
         // generate the special stripe secret which allows us to charge a customer for
         const getClientSecret = async () => {
             const response = await axios({
@@ -37,7 +38,7 @@ const Payment = () => {
                 // Stripe expects the total in a currencies subunits ($ => cents)
                 url: `/payments/create?total=${getBasketTotal(basket) * 100}`
             })
-            console.log("AFTER axios >>>>>>>>>",response);
+            console.log("AFTER axios >>>>>>>>>", response);
             setClientSecret(response.data.clientSecret);
         }
 
@@ -55,19 +56,35 @@ const Payment = () => {
 
         setProcessing(true);
 
-        const payload =  await stripe.confirmCardPayment(clientSecret, {
+        const payload = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement)
             }
-        }).then(({paymentIntent}) => {
+        }).then(({ paymentIntent }) => {
             // paymentIntent = payment confirmation
+
+            db
+                .collection('user')
+                .doc(user?.uid)
+                .collection('orders')
+                .doc(paymentIntent.id)
+                .set({
+                    basket: basket,
+                    amount: paymentIntent.amount,
+                    created: paymentIntent.created,
+                })
+
             setSucceeded(true);
             setError(null);
             setProcessing(false);
 
+            dispatch({
+                type: 'EMPTY_BASKET'
+            });
+
             history.replace('/orders');
         })
-        
+
     }
 
     const handleChange = event => {
