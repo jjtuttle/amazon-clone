@@ -36,10 +36,12 @@ const Orders = () => {
             <h1>Your Orders</h1>
 
             <div className="orders__order">
-                {orders?.map(order => (
+                {orders.length > 0 ? orders?.map(order => (
                     <Order order={order} />
-                ))}
+                )) : <p>No Orders Found.</p>}
             </div>
+
+
         </div>
     );
 };

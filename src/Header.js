@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from './StatProvider';
-import {auth} from './firebase';
+import { auth } from './firebase';
 
 
 const Header = () => {
@@ -12,8 +12,8 @@ const Header = () => {
     const history = useHistory();
     const [ { basket, user }, dispatch ] = useStateValue();
 
-    const handleAuthentication =() => {
-        if(user) {
+    const handleAuthentication = () => {
+        if (user) {
             auth.signOut();
             history.push('/');
         }
@@ -33,6 +33,7 @@ const Header = () => {
                 <input
                     className='header__searchInput'
                     type='text'
+                    placeholder='** Search is not implemented **'
                 />
                 <SearchIcon className="header__searchIcon" />
             </div>
@@ -50,16 +51,18 @@ const Header = () => {
                     </div>
                 </Link>
 
+                <Link to="/orders">
+                    <div className="header__option">
+                        <span className="header__optionLineOne">
+                            Returns
+                        </span>
+                        <span className="header_optionLineTwo">
+                            & Orders
+                        </span>
+                    </div>
+                </Link>
 
-                <div className="header__option">
-                    <span className="header__optionLineOne">
-                        Returns
-                    </span>
-                    <span className="header_optionLineTwo">
-                        & Orders
-                    </span>
-                </div>
-
+                
                 <div className="header__option">
                     <span className="header__optionLineOne">
                         Your
@@ -68,6 +71,7 @@ const Header = () => {
                         Prime
                     </span>
                 </div>
+
 
                 <Link to="/checkout">
                     <div className="header__optionBasket">

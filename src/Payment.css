@@ -38,7 +38,37 @@
     padding:2px 5px;
 }
 
+.payment__details > form {
+    max-width: 400px;
+}
 
+.payment__priceContainer > h3 {
+    padding-top: 10px;
+}
 
+.payment__details > form > div > button {
+    background: #f0c14b;
+    border-radius: 2px;
+    width:100%;
+    height:30px;
+    border: 1px solid;
+    font-weight: bolder;
+    margin-top: 10px;
+    background-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+}
 
+form  {
+    /* padding:60px; */
+    background-color:transparent !important;
+}
+
+.payment__errors {
+    color:red;
+    padding-top: 10px;
+}
+
+.payment__CCinfo{
+    text-align:left;
+}
 

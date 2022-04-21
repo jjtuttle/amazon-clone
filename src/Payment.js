@@ -138,6 +138,9 @@ const Payment = () => {
                 <div className="payment__section">
                     <div className="payment__title">
                         <h3>Payment Method</h3>
+                        <small style={{color:'orange'}}>
+                            Just enter in '4' and '2' consecutively until the end at the CVC - for credit card info.
+                        </small>
                     </div>
 
                     <div className="payment__details">
@@ -164,9 +167,12 @@ const Payment = () => {
                                 </button>
                             </div>
                             {/* Errors */}
-                            {error & <div className="payment__errors">{error}</div>}
+                            {error && <div className="payment__errors">{error}</div>}
                         </form>
+
                     </div>
+
+
                 </div>
 
             </div>

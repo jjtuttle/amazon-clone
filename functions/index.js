@@ -9,8 +9,17 @@ const stripe = require("stripe")("sk_test_51KqfqZAc6MqE7bTK8nCtZd2j95d46jgZXtsaM
 // App Config
 const app = express();
 
+
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200
+}
+
+
 // Middleware
-app.use(cors({ origin: true }));
+// app.use(cors({ origin: true }));
+
 app.use(express.json());
 
 
@@ -18,7 +27,7 @@ app.use(express.json());
 app.get("/", (req, res) => res.status(200).send("Hello World!"));
 
 
-app.post("/payments/create", async (req, res) => {
+app.post("/payments/create", cors(), async (req, res) => {
 
     const total = req.query.total;
 

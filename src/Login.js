@@ -3,12 +3,28 @@ import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './Login.css';
 import { auth } from './firebase';
+// import { useStateValue } from './StatProvider';
+
 
 
 const Login = () => {
+    // const [ { basket }, dispatch ] = useStateValue();
     const history = useHistory();
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
+
+    const handleDemo = (e) => {
+        e.preventDefault();
+    
+        const email = "demo@demo.dev";
+        const password = "password";
+
+        auth.signInWithEmailAndPassword(email, password)
+            .then( auth => {
+                history.push('/');
+            })
+    };
+
 
     const signIn = (e) => {
         e.preventDefault();
@@ -65,6 +81,14 @@ const Login = () => {
                     >
                         Sign In
                     </button>
+
+                    <div className="login__demoUser">
+                        <button className='login__demoUserBtn'
+                            onClick={handleDemo}>
+                            Demo User Login
+                        </button>
+                    </div>
+
                 </form>
                 <p>
                     By signing-in you agree to <strong>**AMAZON FAKE CLONE** </strong>
