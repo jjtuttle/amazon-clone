@@ -2,19 +2,20 @@ import { Button } from '@mui/material';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import CurrencyFormat from 'react-currency-format';
 import CheckoutProduct from './CheckoutProduct';
 import './Payment.css';
 import { getBasketTotal } from './reducer';
 import { useStateValue } from './StatProvider';
 import { useEffect } from 'react';
-import axios from 'axios';
+import axios from './axios';
 
 
 
 const Payment = () => {
     const [ { basket, user }, dispatch ] = useStateValue();
+    const history = useHistory();
 
     const stripe = useStripe();
     const elements = useElements();
@@ -27,6 +28,8 @@ const Payment = () => {
 
 
     useEffect(() => {
+        console.log("BEFORE axios sends to BE API <<<<<<<<");
+        
         // generate the special stripe secret which allows us to charge a customer for
         const getClientSecret = async () => {
             const response = await axios({
@@ -34,6 +37,7 @@ const Payment = () => {
                 // Stripe expects the total in a currencies subunits ($ => cents)
                 url: `/payments/create?total=${getBasketTotal(basket) * 100}`
             })
+            console.log("AFTER axios >>>>>>>>>",response);
             setClientSecret(response.data.clientSecret);
         }
 
@@ -41,6 +45,10 @@ const Payment = () => {
     }, [ basket ]);
 
 
+    console.log("THE SECRET IS >>>>>>", clientSecret);
+
+
+    // Submit
     const handleSubmit = async (event) => {
         // Stripe functionality
         event.preventDefault();
@@ -49,8 +57,15 @@ const Payment = () => {
 
         const payload =  await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
-                card: elements.getElements
+                card: elements.getElement(CardElement)
             }
+        }).then(({paymentIntent}) => {
+            // paymentIntent = payment confirmation
+            setSucceeded(true);
+            setError(null);
+            setProcessing(false);
+
+            history.replace('/orders');
         })
         
     }
@@ -107,9 +122,10 @@ const Payment = () => {
                     <div className="payment__title">
                         <h3>Payment Method</h3>
                     </div>
+
                     <div className="payment__details">
                         {/* Stripe magic will go here */}
-                        <form onSubmit={handleSubmit}>
+                        <form className="payment__form" onSubmit={handleSubmit}>
                             <CardElement onChange={handleChange} />
 
                             <div className="payment__priceContainer">
@@ -123,12 +139,12 @@ const Payment = () => {
                                     thousandSeparator={true}
                                     prefix={"$"}
                                 />
-                                <Button disabled={processing || disabled || succeeded}
+                                <button disabled={processing || disabled || succeeded}
                                     size='small'
                                     style={{ textTransform: 'none' }}
                                 >
                                     <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
-                                </Button>
+                                </button>
                             </div>
                             {/* Errors */}
                             {error & <div className="payment__errors">{error}</div>}

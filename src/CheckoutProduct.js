@@ -2,7 +2,7 @@ import React from 'react';
 import './CheckoutProduct.css';
 import { useStateValue } from './StatProvider';
 import Button from '@mui/material/Button';
-import FlipMove from 'react-flip-move';
+// import FlipMove from 'react-flip-move';
 
 
 const CheckoutProduct = ({ id, image, title, price, rating }) => {
@@ -17,7 +17,7 @@ const CheckoutProduct = ({ id, image, title, price, rating }) => {
     }
 
     return (
-        <FlipMove>
+        // <FlipMove>
             <div className="checkoutProduct">
                 <img className="checkoutProduct__image"
                     src={image} alt="item"
@@ -41,7 +41,7 @@ const CheckoutProduct = ({ id, image, title, price, rating }) => {
                         Remove from Basket</Button>
                 </div>
             </div>
-        </FlipMove>
+        //  </FlipMove> 
 
     );
 };
