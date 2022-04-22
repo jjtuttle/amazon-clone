@@ -1,76 +1,23 @@
+# Amazon Clone 
+### Using React / Redux with Firebase firestore and Express.js backend & Google Auth sign-up/sign-in
 
-# Create React App Template
 
-A no-frills template from which to create React applications with
-[Create React App](https://github.com/facebook/create-react-app).
+- Can create a new account or login with already created credentials
+- Can simply click the Demo User Button to be automatically logged in as a Demo User to explore
+- For the checkout as per the side note just enter the numbers '4' & '2' consecutively until it stops for a valid test credit card
+- Stripe API for the credit card processing
 
-```sh
-npx create-react-app my-app --template @appacademy/simple --use-npm
-```
+## Login and Signup with Google Auth
+<img width="337" alt="Screen Shot 2022-04-22 at 9 59 06 AM" src="https://user-images.githubusercontent.com/2349101/164760626-6bb9c69a-2020-4eba-9b1c-88f36e468f5a.png">
 
-## Available Scripts
 
-In the project directory, you can run:
+## Homepage
+<img width="671" alt="Screen Shot 2022-04-22 at 9 59 18 AM" src="https://user-images.githubusercontent.com/2349101/164760810-1e37dc7a-51af-4959-ae56-9dc1f847665b.png">
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Basket with items
+<img width="676" alt="Screen Shot 2022-04-22 at 9 59 36 AM" src="https://user-images.githubusercontent.com/2349101/164760888-32eaaf6a-7d7e-4591-b368-a0509c00f645.png">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Checkout page with Stripe Credit Card Processing
+<img width="678" alt="Screen Shot 2022-04-22 at 9 59 42 AM" src="https://user-images.githubusercontent.com/2349101/164760947-2e354e7a-d04c-41f6-a969-adc1d0aeeb44.png">
