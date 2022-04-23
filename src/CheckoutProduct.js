@@ -31,7 +31,7 @@ const CheckoutProduct = ({ id, image, title, price, rating, hideButton }) => {
                 </p>
                 <div className="checkoutProduct__rating">
                     {Array(rating).fill().map((_, i) => (
-                        <p>🌟</p>
+                        <p key={i} >🌟</p>
                     ))}
                 </div>
                 {/* Hide button IF on Orders receipt endpoint */}

@@ -29,6 +29,25 @@
     width:100%;
 }
 
+.header__searchInput:focus {
+    outline: none;
+    color: #cd9042;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #cd9042;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color:#cd9042 ;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #cd9042;
+  opacity: 1; /* Firefox */
+}
+
+
+
 .header__searchIcon {
     padding: 5px;
     height:22px !important;

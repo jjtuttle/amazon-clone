@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React from 'react';
 import { useState } from 'react';
@@ -29,8 +29,6 @@ const Payment = () => {
 
 
     useEffect(() => {
-        console.log("BEFORE axios sends to BE API <<<<<<<<");
-
         // generate the special stripe secret which allows us to charge a customer for
         const getClientSecret = async () => {
             const response = await axios({
@@ -38,7 +36,6 @@ const Payment = () => {
                 // Stripe expects the total in a currencies subunits ($ => cents)
                 url: `/payments/create?total=${getBasketTotal(basket) * 100}`
             })
-            console.log("AFTER axios >>>>>>>>>", response);
             setClientSecret(response.data.clientSecret);
         }
 
@@ -100,7 +97,9 @@ const Payment = () => {
             <div className="payment__container">
                 <h1>
                     Checkout (
-                    <Link to='/checkout'>{basket?.length} items</Link>
+                    <Link to='/checkout'>
+                        {basket?.length} items
+                        </Link>
                     )
                 </h1>
 
@@ -123,7 +122,7 @@ const Payment = () => {
                     </div>
                     <div className="payment__items">
                         {basket.map(item => (
-                            <CheckoutProduct
+                            <CheckoutProduct key={item.id}
                                 id={item.id}
                                 title={item.title}
                                 image={item.image}

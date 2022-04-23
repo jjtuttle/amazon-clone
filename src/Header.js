@@ -34,6 +34,7 @@ const Header = () => {
                     className='header__searchInput'
                     type='text'
                     placeholder='** Search is not implemented **'
+                    style={{ color:'#cd9042'}}
                 />
                 <SearchIcon className="header__searchIcon" />
             </div>

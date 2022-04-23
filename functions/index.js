@@ -29,23 +29,27 @@ app.get("/", (req, res) => res.status(200).send("Hello World!"));
 
 app.post("/payments/create", cors(), async (req, res) => {
 
-    const total = req.query.total;
+    try {
+        const total = req.query.total;
 
-    console.log("Payment Request Received BOOMMMM!!! - for this amount >>>", total);
+        console.log("Payment Request Received BOOMMMM!!! - for this amount >>>", total);
 
-    const paymentIntent = await stripe.paymentIntents.create({
-        amount: total,  // subunits of the currency
-        currency: "usd",
-    });
-    res.status(201).send({
-        clientSecret: paymentIntent.client_secret,
-    })
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: total,  // subunits of the currency
+            currency: "usd",
+        });
+        res.status(201).send({
+            clientSecret: paymentIntent.client_secret,
+        })
+    } catch (err) {
+        res.status(500).json({ statusCode: 500, message: err.message });
+    }
 });
 
 
 app.get("*", (req, res) => {
     res.status(404)
-    .send("404, Not Found");
+        .send("404, Not Found");
 });
 
 
