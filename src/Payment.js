@@ -99,7 +99,7 @@ const Payment = () => {
                     Checkout (
                     <Link to='/checkout'>
                         {basket?.length} items
-                        </Link>
+                    </Link>
                     )
                 </h1>
 
@@ -137,7 +137,7 @@ const Payment = () => {
                 <div className="payment__section">
                     <div className="payment__title">
                         <h3>Payment Method</h3>
-                        <small style={{color:'orange'}}>
+                        <small style={{ color: 'orange' }}>
                             Just enter in '4' and '2' consecutively until the end at the CVC - for credit card info.
                         </small>
                     </div>
@@ -158,7 +158,8 @@ const Payment = () => {
                                     thousandSeparator={true}
                                     prefix={"$"}
                                 />
-                                <button disabled={processing || disabled || succeeded}
+                                <button role='link'
+                                    disabled={processing || disabled || succeeded}
                                     size='small'
                                     style={{ textTransform: 'none' }}
                                 >

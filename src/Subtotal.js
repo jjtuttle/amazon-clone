@@ -32,7 +32,8 @@ const Subtotal = () => {
                 prefix={"$"}
             />
 
-            <Button size='small'
+            <Button 
+                size='small'
                 style={{ textTransform: 'none' }}
                 onClick={e => history.push('/payment')}
             >
